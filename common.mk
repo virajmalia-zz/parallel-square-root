@@ -3,13 +3,13 @@ TASK_CXX=../tasksys.cpp
 TASK_LIB=-lpthread
 TASK_OBJ=objs/tasksys.o
 
-CXX=clang++
+CXX=g++
 CXXFLAGS+=-Iobjs/ -O2 -std=c++11
 CC=clang
 CCFLAGS+=-Iobjs/ -O2
 
 LIBS=-lm $(TASK_LIB) -lstdc++
-ISPC=ispc
+ISPC=./ispc
 ISPC_FLAGS+=-O2
 ISPC_HEADER=objs/$(ISPC_SRC:.ispc=_ispc.h)
 

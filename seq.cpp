@@ -1,5 +1,6 @@
 #include<iostream>
 #include<ctime>
+#include<random>
 
 using namespace std;
 
@@ -31,7 +32,7 @@ int main(){
   for(unsigned int i=0; i<15000000; i++){
     n = lo + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(hi - lo)));
     cout.precision(4);
-    cout<<"Square root of "<<n<<" is "<<squareRoot(n)<<"  Iteration: "<<i<<endl;
+    //cout<<"Square root of "<<n<<" is "<<squareRoot(n)<<"  Iteration: "<<i<<endl;
   }
   
   clock_gettime(CLOCK_MONOTONIC, &finish);
