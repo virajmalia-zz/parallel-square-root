@@ -8,7 +8,7 @@ using namespace std;
 float squareRoot(float n)
 {
   float x = n;
-  float y = 1;
+  float y = 0;
   float e = 0.0001; /* e decides the accuracy level*/
   while(x - y > e)
   {
