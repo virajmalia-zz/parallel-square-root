@@ -1,5 +1,6 @@
 #include<iostream>
 #include<ctime>
+#include<random>
 
 using namespace std;
 
@@ -19,25 +20,34 @@ float squareRoot(float n)
  
 int main(){
 
-  float n;
-  float lo=0.0, hi=5.0;
-  srand(time(NULL));
-
-  struct timespec start, finish;
-  double elapsed;
-
+  long long unsigned int N = 15000000;
+    float* input = new float[N];
+    float* output = new float[N];
+    
+    float lo=0.0, hi=5.0;
+    
+    struct timespec start, finish;
+    double elapsed;
+    
+    srand(time(NULL));
+    
+    for(int i=0; i<N; i++)
+        input[i] = lo + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(hi - lo)));
+	
   clock_gettime(CLOCK_MONOTONIC, &start);
-
   for(unsigned int i=0; i<15000000; i++){
-    n = lo + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(hi - lo)));
-    cout.precision(4);
-    cout<<"Square root of "<<n<<" is "<<squareRoot(n)<<"  Iteration: "<<i<<endl;
+    
+	output[i] = squareRoot(input[i]); 
   }
   
   clock_gettime(CLOCK_MONOTONIC, &finish);
 
   elapsed = (finish.tv_sec - start.tv_sec);
   elapsed += (finish.tv_nsec - start.tv_nsec) / 1000000000.0;
+  for(int i=0; i<16; i++){
+        cout.precision(4);
+        cout<<output[i]<<endl;
+  }
 
   cout<<"Elapsed Time: "<<elapsed<<endl;      //89.78 sec p=87.98
 
